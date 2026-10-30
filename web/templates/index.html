@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cho-Han</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <div class="lantern lantern-a" aria-hidden="true"></div>
+    <div class="lantern lantern-b" aria-hidden="true"></div>
+    <main class="page">
+      <nav class="page-nav"><a href="/help">Help</a></nav>
+      <header class="hero">
+        <p class="hero-kicker">丁半</p>
+        <h1>Cho-Han</h1>
+        <p class="tagline">Bet on even (Cho) or odd (Han) before the dice are revealed</p>
+      </header>
+
+      <section class="card purse-card">
+        <span class="label">Purse</span>
+        <span id="purse" class="purse">5000</span>
+        <span class="unit">mon</span>
+      </section>
+
+      <p id="message" class="message" aria-live="polite"></p>
+
+      <section class="card" id="bet-panel">
+        <label class="field-label" for="bet-amount">Bet amount</label>
+        <div class="row">
+          <input type="number" id="bet-amount" min="1" step="1" value="100" />
+          <button type="button" class="btn primary" id="btn-bet">Place bet</button>
+        </div>
+        <div class="chips">
+          <button type="button" class="chip" data-bet="50">50</button>
+          <button type="button" class="chip" data-bet="100">100</button>
+          <button type="button" class="chip" data-bet="500">500</button>
+          <button type="button" class="chip" data-bet="1000">1000</button>
+        </div>
+      </section>
+
+      <section class="card hidden" id="guess-panel">
+        <p class="field-label">Your call</p>
+        <div class="guess-row">
+          <button type="button" class="btn cho" id="btn-cho">Cho · 偶</button>
+          <button type="button" class="btn han" id="btn-han">Han · 奇</button>
+        </div>
+      </section>
+
+      <section class="card hidden" id="reveal-panel">
+        <div class="dice-row">
+          <div class="die">
+            <span class="die-jp" id="die1-jp">—</span>
+            <span class="die-num" id="die1">?</span>
+          </div>
+          <div class="die">
+            <span class="die-jp" id="die2-jp">—</span>
+            <span class="die-num" id="die2">?</span>
+          </div>
+        </div>
+        <p id="result-line" class="result-line"></p>
+        <button type="button" class="btn primary" id="btn-next">Next round</button>
+      </section>
+
+      <section class="card hidden" id="broke-panel">
+        <p>You are out of mon.</p>
+        <button type="button" class="btn primary" id="btn-reset">Start again (5000 mon)</button>
+      </section>
+
+      <p id="error-text" class="error" role="alert" hidden></p>
+    </main>
+    <script src="/static/session-persist.js"></script>
+    <script src="/static/app.js"></script>
+  </body>
+</html>
